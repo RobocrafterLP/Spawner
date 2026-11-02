@@ -1,0 +1,228 @@
+# Menu size must be a multiple of 9, between 9 and 54.
+menu:
+  title: "§8Spawner overview"
+  size: 54
+  # Rows listed here are left empty to visibly separate menu sections (row numbers start at 0).
+  spacer-rows: [2, 4]
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    name: " "
+  overview:
+    material: SPAWNER
+    name: "§6Spawner overview"
+  categories:
+    effects:
+      slot: 9
+      material: AMETHYST_SHARD
+      name: "§d§lEffects"
+    upgrades:
+      slot: 27
+      material: SMITHING_TABLE
+      name: "§6§lUpgrades"
+    stacking:
+      slot: 45
+      material: HOPPER
+      name: "§a§lStacking"
+  # Inventory slots start at 0. Increase size and move/add entries here to expand the menu.
+  slots:
+    overview: 4
+    reclaim: 8
+    traits:
+      silent: 10
+      stupor: 12
+      gravity: 14
+      twilight: 16
+    upgrades:
+      frontiersman: 28
+      wayfarer: 29
+      mountaineer: 30
+      thundering: 31
+    default-runes:
+      require-power: 17
+      no-item-drops: 15
+    stackable:
+      more-drops: 46
+      wisdom: 47
+    runes:
+      warden: 32
+
+# These runes must be physically applied to each spawner before their effects work.
+default-runes:
+  require-power:
+    type: trait
+    enabled: true
+    effects:
+      require-power: true
+    name: "Redstone Activation"
+    icon: REDSTONE
+    color: c
+    description: "Spawner only produces mobs while powered."
+    details:
+      - "Unpowered spawners have zero activation range."
+      - "Powered spawners use the highest configured upgrade range."
+  no-item-drops:
+    type: trait
+    enabled: true
+    effects:
+      no-item-drops: true
+    name: "No Item Drops"
+    icon: BARRIER
+    color: 4
+    description: "Mobs spawned by spawners drop no items."
+    details:
+      - "The More Drops rune overrides this for its spawner."
+  silent:
+    type: trait
+    enabled: true
+    effects:
+      silent: true
+    name: "Rune of Silent"
+    icon: FEATHER
+    color: b
+    description: "Spawned mobs will make no sound."
+    details:
+      - "Spawned mobs are silenced."
+  stupor:
+    type: trait
+    enabled: true
+    effects:
+      no-ai: true
+    name: "Rune of Stupor"
+    icon: COBWEB
+    color: 5
+    description: "Spawned mobs do not act or wander, but keep gravity."
+    details:
+      - "Spawned mobs are unaware of their surroundings."
+  gravity:
+    type: trait
+    enabled: true
+    effects:
+      gravity: true
+    name: "Rune of Weightlessness"
+    icon: PHANTOM_MEMBRANE
+    color: f
+    description: "Spawned mobs have no gravity."
+    details:
+      - "Spawned mobs float freely."
+  twilight:
+    type: trait
+    enabled: true
+    effects:
+      twilight: true
+    name: "Rune of Perpetual Twilight"
+    icon: PURPLE_DYE
+    color: d
+    description: "Forces a spawner to ignore light requirements."
+    details:
+      - "Ignores block and sky light requirements on this spawner."
+      - "Original spawn rules are restored when the rune is removed."
+  reclaim:
+    type: reclaim
+    enabled: true
+    name: "Spawner Reclamation Rune"
+    icon: NETHER_STAR
+    color: c
+    description: "Allows you to mine and keep a mob spawner."
+    details:
+      - "Keep in your inventory while mining."
+      - "Preserves mob type, settings and applied runes."
+
+runes:
+  frontiersman:
+    type: upgrade
+    enabled: true
+    name: "Frontiersman's Spawner Upgrade Rune"
+    icon: OAK_SAPLING
+    color: 2
+    description: "Slightly improves a Mob Spawner."
+    upgrade:
+      rank: 1
+      min-delay: 150
+      max-delay: 600
+      spawn-count: 7
+      max-entities: 12
+      activation-range: 24
+  wayfarer:
+    type: upgrade
+    enabled: true
+    name: "Wayfarer's Spawner Upgrade Rune"
+    icon: COMPASS
+    color: 3
+    description: "Improves a Mob Spawner."
+    upgrade:
+      rank: 2
+      min-delay: 100
+      max-delay: 400
+      spawn-count: 10
+      max-entities: 18
+      activation-range: 32
+  mountaineer:
+    type: upgrade
+    enabled: true
+    name: "Mountaineer's Spawner Upgrade Rune"
+    icon: IRON_PICKAXE
+    color: 6
+    description: "Greatly improves a Mob Spawner."
+    upgrade:
+      rank: 3
+      min-delay: 50
+      max-delay: 200
+      spawn-count: 13
+      max-entities: 24
+      activation-range: 40
+  thundering:
+    type: upgrade
+    enabled: true
+    name: "Thundering Spawner Upgrade Rune"
+    icon: LIGHTNING_ROD
+    color: e
+    description: "Unleashes the strongest spawner upgrade."
+    upgrade:
+      rank: 4
+      min-delay: 50
+      max-delay: 50
+      spawn-count: 16
+      max-entities: 32
+      activation-range: 48
+  more-drops:
+    type: stacking
+    enabled: true
+    name: "Rune of Bountiful Drops"
+    icon: GOLD_INGOT
+    color: 6
+    description: "Increases item drops from this spawner's mobs. Can be applied repeatedly."
+    stacking:
+      max-stacks: 5
+      extra-drops-per-stack: 1
+    details:
+      - "Each application adds one extra copy of mob drops."
+  wisdom:
+    type: stacking
+    enabled: true
+    name: "Rune of Wisdom"
+    icon: EXPERIENCE_BOTTLE
+    color: a
+    description: "Increases experience dropped by this spawner's mobs. Can be applied repeatedly."
+    stacking:
+      max-stacks: 5
+      extra-experience-percent-per-stack: 25
+    details:
+      - "Each application adds 25% experience."
+  warden:
+    item:
+      name: "Warden's Rune"
+      description: "Requires redstone and prevents item drops."
+      enabled: true
+      effects:
+        require-power: true
+        no-item-drops: true
+      upgrade:
+        rank: 5
+        min-delay: 40
+        max-delay: 120
+        spawn-count: 12
+        max-entities: 24
+        activation-range: 56
+    type: upgrade
+    icon: ECHO_SHARD
+    color: "5"

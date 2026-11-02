@@ -1,0 +1,22 @@
+name: Spawner
+version: '${version}'
+
+main: com.RobocrafterLP.spawner.Spawner
+api-version: '26.3'
+load: POSTWORLD
+commands:
+  rune:
+    description: Give one or all spawner runes to a player
+    usage: /rune <player> <rune|all> [amount] | /rune reload
+    permission: spawner.rune.give
+  spawner:
+    description: Open the overview for the spawner you are looking at
+    usage: /spawner
+    permission: spawner.menu
+permissions:
+  spawner.rune.give:
+    description: Allows giving rune items
+    default: op
+  spawner.menu:
+    description: Allows opening the spawner overview
+    default: true
